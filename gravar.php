@@ -27,14 +27,14 @@ if (in_array('', [$nome, $data_admissao, $cargo]) || $qtde_salarios <= 0) {
 
 
 if (isset($_POST['N_Registro']) && $_POST['N_Registro'] !== '') {
-    // UPDATE
+  
     $id = intval($_POST['N_Registro']);
     $stmt = $conecta_db->prepare("UPDATE tb_funcionarios SET Nome_Funcionario=?, data_admissao=?, cargo=?, qtde_salarios=?, salario_bruto=?, inss=?, salario_liquido=? WHERE N_Registro=?");
     $stmt->bind_param("sssidddi", $nome, $data_admissao, $cargo, $qtde_salarios, $salario_bruto, $inss, $salario_liquido, $id);
     $ok = $stmt->execute();
     $stmt->close();
 } else {
-    // INSERT
+    
     $stmt = $conecta_db->prepare("INSERT INTO tb_funcionarios (Nome_Funcionario, data_admissao, cargo, qtde_salarios, salario_bruto, inss, salario_liquido) VALUES (?,?,?,?,?,?,?)");
     $stmt->bind_param("sssiddd", $nome, $data_admissao, $cargo, $qtde_salarios, $salario_bruto, $inss, $salario_liquido);
     $ok = $stmt->execute();
