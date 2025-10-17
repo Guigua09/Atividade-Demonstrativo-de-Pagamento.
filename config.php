@@ -9,7 +9,7 @@ if ($conecta_db->connect_error) {
     die("Erro ao conectar ao banco de dados: " . $conecta_db->connect_error);
 }
 
-// Força UTF-8 para acentos
+
 $conecta_db->set_charset("utf8mb4");
 ?>
 
